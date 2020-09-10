@@ -23,7 +23,6 @@ main{
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-
 .center{
     text-align: center;
     background-color: #f1f1f1;
@@ -32,7 +31,6 @@ main{
     border-radius: inherit;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-
 }
 .nav{
     background-color: rgb(239,158,44);
@@ -58,7 +56,6 @@ main{
     transition: 0.3s;
     font-size: 1.3em;
     outline-style: groove;
-
 }
 .tab button:hover {
     background-color: #ddd;
@@ -91,10 +88,6 @@ main{
     background-color: #4CAF50;
     box-shadow: 0 9px #999;
     outline: none;
-}
-
-#on {
-    /* background-color: lightgreen; */
 }
 #off {
     background-color: lightcoral;
