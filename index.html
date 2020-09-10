@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MelcatAuto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="nav">
+       <h1>MelcatAuto</h1> 
+    </div>
+    <h2 class="center">CONTROL PANE</h2>
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'power')" id="defaultOpen">Power</button>
+        <button class="tablinks" onclick="openCity(event, 'pump')">Water Pump</button>
+        <button class="tablinks" onclick="openCity(event, 'light')">Lights</button>
+    </div>
+    
+    <!-- Tab content -->
+    <div id="power" class="tabcontent parent">
+        
+        <div>
+           <h3>MODE: <strong>.%PMODE%.</strong></h3>
+            <h3>STATUS: <strong>.%POWER%.</strong></h3>
+            <a href="#"><button>GEN ON</button></a>
+            <a href="#"><button>GEN OFF</button></a> 
+        </div>
+    </div>
+
+    <div id="pump" class="tabcontent parent">
+        <div>
+            <h3>MODE: <strong>.%WMODE%.</strong></h3>
+            <h3>STATUS: <strong>.%PUMP%.</strong></h3>
+            <a href="#"><button>PUMP ON</button></a>
+            <a href="#"><button>PUMP OFF</button></a>
+        </div>
+
+    </div>
+
+    <div id="light" class="tabcontent parent">
+        <div>
+            <h3>Mode: <strong>.%LMODE%</strong></h3>
+            <h3>STATUS: <strong>.%LIGHT%.</strong></h3>
+            <button>LIGHT ON</button>
+            <button>LIGHT OFF</button>
+        </div>
+        
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

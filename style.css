@@ -1,0 +1,81 @@
+/* body{
+    /* background-image: url(Logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1; */
+    /* opacity: 0.5; */
+    /* filter: blur(8px); */
+} */
+.parent{
+    background-color:rgb(230,242,255) ;
+    /* height: 80vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.center{
+    text-align: center;
+    background-color: #f1f1f1;
+    padding: .5em;
+    margin: 0;
+
+}
+.nav{
+    background-color: rgb(239,158,44);
+    /* background: linear-gradient(rgb(239,158,44),#f1f1f1); */
+    padding: .5em 1em;
+}
+.nav h1{
+    margin: 0%;
+}
+.tab{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    background: linear-gradient(#f1f1f1,#fff);
+}
+.tab button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: .8em ;
+    transition: 0.3s;
+    font-size: 1.3em;
+
+}
+.tab button:hover {
+    background-color: #ddd;
+  }
+  .tab button.active {
+    background: linear-gradient(#f1f1f1,rgb(239,158,44));
+}
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.parent{
+    height: 70vh;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;   
+    text-align: center;
+}
+.parent button{
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    font-weight: bolder;
+    font-size: 1em;
+    padding: 0;
+}
+/* a:visited{
+    display: none;
+    visibility: hidden;
+} */
