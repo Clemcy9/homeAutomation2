@@ -1,18 +1,27 @@
-/* body{
-    /* background-image: url(Logo.png);
+body{
+    background-image: url(Logo.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    z-index: -1; */
-    /* opacity: 0.5; */
-    /* filter: blur(8px); */
-} */
+    backdrop-filter: blur(5px);
+    height: 100vh;
+}
+main{
+    width: 90vw;
+    margin: auto;
+    border-radius: 1em;
+    box-shadow: 2px 2px 5px rgba(0,0 ,0,0.5);
+    opacity: 0.8;
+}   
 .parent{
     background-color:rgb(230,242,255) ;
     /* height: 80vh; */
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: inherit;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .center{
@@ -20,6 +29,9 @@
     background-color: #f1f1f1;
     padding: .5em;
     margin: 0;
+    border-radius: inherit;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 
 }
 .nav{
@@ -45,12 +57,13 @@
     padding: .8em ;
     transition: 0.3s;
     font-size: 1.3em;
+    outline-style: groove;
 
 }
 .tab button:hover {
     background-color: #ddd;
-  }
-  .tab button.active {
+}
+.tab button.active {
     background: linear-gradient(#f1f1f1,rgb(239,158,44));
 }
 .tabcontent {
@@ -74,8 +87,21 @@
     font-weight: bolder;
     font-size: 1em;
     padding: 0;
+    color: white;
+    background-color: #4CAF50;
+    box-shadow: 0 9px #999;
+    outline: none;
 }
-/* a:visited{
-    display: none;
-    visibility: hidden;
-} */
+
+#on {
+    /* background-color: lightgreen; */
+}
+#off {
+    background-color: lightcoral;
+}
+button:active{
+    box-shadow: 0 5px #666;
+    transform: translateY(4px); 
+    background-color: yellow;
+    color: black; 
+}
