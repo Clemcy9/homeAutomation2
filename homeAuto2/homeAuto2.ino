@@ -15,8 +15,8 @@ AsyncWebServer server(80);
 
 //web variables
 const int gen = 2;
-const int light = 13;
-const int pump = 14;
+const int light = 4;
+const int pump = 13;
 
 //web placeholders
 String genstate, lightstate,pumpstate;
@@ -47,6 +47,8 @@ String PumpState(){
   else{
     pumpstate = "OFF";
   }
+  Serial.println("this is the value of pumpstate: ");
+  Serial.println(pumpstate);
   return pumpstate;    
 }
 
@@ -61,6 +63,7 @@ String processor (const String& var){
   else if(var == "Pump"){
     return PumpState();
   }
+  return String();
 }
 
 void setup(){
@@ -82,20 +85,6 @@ void setup(){
   if(!SPIFFS.begin(true)){
     Serial.println("could not start SPIFFS");
   }
-
-  //Routes for Placeholder Updating (power,light,pump)
-//  server.on("/power", HTTP_GET, [](AsyncWebServerRequest *request){
-//    request->send_P(200, "text/plain", GenState().c_str());
-//  });
-//
-//  server.on("/light", HTTP_GET, [](AsyncWebServerRequest *request){
-//    request->send_P(200, "text/plain", LightState().c_str());
-//  });
-//
-//  server.on("/pump", HTTP_GET, [](AsyncWebServerRequest *request){
-//    request->send_P(200, "text/plain", PumpState().c_str());
-//  });
-
   //Route for images
   server.on("/Logo.png", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/Logo.png", "image/png");
@@ -114,46 +103,69 @@ void setup(){
   
     
   //Routes for web pages
+  server.on("/control", HTTP_GET, [](AsyncWebServerRequest *request){
+     request->send(SPIFFS, "/control.html", String(), false, processor);
+   });
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
     if(!request->authenticate(username, password))
       return request->requestAuthentication();
-    request->send(SPIFFS, "/control.html", String(), false, processor);
+     request->redirect("/control");
+//    request->send(SPIFFS, "/control.html", String(), false, processor);
   });
-  server.on("/home", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/index.html", String(), false, processor);
-  });
+  // server.on("/home", HTTP_GET, [](AsyncWebServerRequest *request){
+  //   request->send(SPIFFS, "/index.html", String(), false, processor);
+  // });
+  
+  //Routes for Placeholder Updating (power,light,pump)
+  //  server.on("/power", HTTP_GET, [](AsyncWebServerRequest *request){
+  //    request->send_P(200, "text/plain", GenState().c_str());
+  //  });
+  //
+  //  server.on("/light", HTTP_GET, [](AsyncWebServerRequest *request){
+  //    request->send_P(200, "text/plain", LightState().c_str());
+  //  });
+  //
+  //  server.on("/pump", HTTP_GET, [](AsyncWebServerRequest *request){
+  //    request->send_P(200, "text/plain", PumpState().c_str());
+  //  });
 
   //routes for generator
   server.on("/onGen", HTTP_GET, [](AsyncWebServerRequest *request){
     digitalWrite(gen,HIGH);
-    request->send(SPIFFS, "/control.html", String(), false, processor);
+    request->send(200, "text/plain", GenState().c_str());
+    // request->send(SPIFFS, "/control.html", String(), false, processor);
   });
 
   server.on("/offGen", HTTP_GET, [](AsyncWebServerRequest *request){
     digitalWrite(gen,LOW);
-    request->send(SPIFFS, "/control.html", String(), false, processor);
+    request->send(200, "text/plain", GenState().c_str());
+    // request->send(SPIFFS, "/control.html", String(), false, processor);
   });
 
   //routes for Lighting
   server.on("/onLight", HTTP_GET, [](AsyncWebServerRequest *request){
     digitalWrite(light,HIGH);
-    request->send(SPIFFS, "/control.html", String(), false, processor);
+    request->send(200, "text/plain", LightState().c_str());
+    // request->send(SPIFFS, "/control.html", String(), false, processor);
   });
 
   server.on("/offLight", HTTP_GET, [](AsyncWebServerRequest *request){
     digitalWrite(light,LOW);
-    request->send(SPIFFS, "/control.html", String(), false, processor);
+    request->send(200, "text/plain", LightState().c_str());
+    // request->send(SPIFFS, "/control.html", String(), false, processor);
   });
 
   //routes for water pump
   server.on("/onPump", HTTP_GET, [](AsyncWebServerRequest *request){
     digitalWrite(pump,HIGH);
-    request->send(SPIFFS, "/control.html", String(), false, processor);
+    request->send(200, "text/plain", PumpState().c_str());
+    // request->send(SPIFFS, "/control.html", String(), false, processor);
   });
 
   server.on("/offPump", HTTP_GET, [](AsyncWebServerRequest *request){
     digitalWrite(pump,LOW);
-    request->send(SPIFFS, "/control.html", String(), false, processor);
+    request->send(200, "text/plain", PumpState().c_str());
+    // request->send(SPIFFS, "/control.html", String(), false, processor);
   });
 
   server.begin();
