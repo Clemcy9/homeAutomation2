@@ -53,5 +53,18 @@
     </main>
     
     <script src="main.js"></script>
+    <script>
+        //all functions with 1 suffix represent on state, while those with 2 is off state
+        
+        function Gen1() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("gen").innerHTML = this.responseText;
+          }
+        };
+        xhttp.open("GET", "/power", true);
+        xhttp.send();
+    </script>
 </body>
 </html>

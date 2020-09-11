@@ -105,26 +105,13 @@ void setup(){
   server.on("/style.css", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/style.css", "text/css");
   });
-  server.on("/bootstrap-grid.min.css", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/bootstrap-grid.min.css", "text/css");
-  });
-  server.on("/bootstrap.min.css", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/bootstrap.min.css", "text/css");
-  });
-  server.on("/bootstrap4-toggle.min.css", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/bootstrap4-toggle.min.css", "text/css");
-  });
+  
 
   //Routes for javaScript files
-  server.on("/jquery3.2.js", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/jquery3.2.js", "text/js");
+  server.on("/main.js", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/main.js", "text/js");
   });
-  server.on("/bootstrap.min.js", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/bootstrap.min.js", "text/js");
-  });
-  server.on("/bootstrap4-toggle.min.js", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/bootstrap4-toggle.min.js", "text/js");
-  });
+  
     
   //Routes for web pages
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
